@@ -144,10 +144,11 @@
     margin: 10px;
   }
 
-  .scrollable-list {
-    overflow-y: auto;
-    padding-right: 10px; /* space for scrollbar */
-  }
+.scrollable-list {
+  max-height: 600px; /* or whatever height you want */
+  overflow-y: auto;
+  padding-right: 10px; /* space for scrollbar */
+}
 
   /* Product Edit Popup Specific Styles */
   .product-edit-popup-overlay {
