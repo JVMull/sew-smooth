@@ -50,8 +50,7 @@ const Analytics = () => {
       </div>
 
       <div className="dashboard-row">
-        <div className="card full-width">
-          <h2>Revenue</h2>
+        <div className="card full-width sales-chart-container">
           <SalesChart />
         </div>
 
