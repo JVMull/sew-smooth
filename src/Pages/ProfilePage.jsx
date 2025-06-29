@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import '../css/ProfilePage.css';
 import '../css/buttons.css';
 import Order from '../Components/Order';
-import Admin from './Admin';
+import ClaimedOrders from '../Components/AdminComponents/ClaimedOrders';
 
 function ProfilePage() {
     const [userData, setUserData] = useState(null);
@@ -29,7 +29,9 @@ function ProfilePage() {
                     const user = response.data.find((u) => u.user_id === parseInt(userId));
                     if (user) {
                         setUserData(user);
-                        fetchAllUserOrders(userId, userRole);
+                        if (user.user_role !== 'employee') {
+                            fetchUserOrders(userId);
+                        }
                     } else {
                         alert('User not found. Redirecting to login.');
                         window.location.href = '/login';
@@ -46,19 +48,13 @@ function ProfilePage() {
         fetchUserData();
     }, [navigate]);
 
-    const fetchAllUserOrders = async (userId, userRole) => {
+    const fetchUserOrders = async (userId) => {
         try {
-            let response;
-            if (userRole === 'admin') {
-                response = await axios.get('https://sk8ts-shop.com/api/orders');
-            } else {
-                response = await axios.get(`https://sk8ts-shop.com/api/orders/user/${userId}`);
-            }
+            const response = await axios.get(`https://sk8ts-shop.com/api/orders/user/${userId}`);
             
             if (response.status === 200 && Array.isArray(response.data)) {
-                // Extract unique order IDs
                 const uniqueOrderIds = [...new Set(response.data.map(order => order.order_id))];
-                setOrderIds(uniqueOrderIds.sort((a, b) => b - a)); // Sort in descending order
+                setOrderIds(uniqueOrderIds.sort((a, b) => b - a));
             } else {
                 alert('Error retrieving orders.');
             }
@@ -80,7 +76,6 @@ function ProfilePage() {
     }
 
     const isEmployee = userData.user_role === 'employee';
-    const isAdmin = userData.user_role === 'admin';
 
     return (
         <div className="profile-page-container">
@@ -132,28 +127,31 @@ function ProfilePage() {
                 </button>
             </div>
 
-            {isAdmin ? (
-                <div className="admin-section">
-                    <Admin />
-                </div>
-            ) : (
-                <div className="orders-section">
-                    <h2>Order History</h2>
-                    <div className="orders-container">
-                        {orderIds.length > 0 ? (
-                            orderIds.map(orderId => (
-                                <Order 
-                                    key={orderId} 
-                                    orderId={orderId} 
-                                    editable={isEmployee}
-                                />
-                            ))
-                        ) : (
-                            <p className="no-orders">No orders found</p>
-                        )}
-                    </div>
-                </div>
-            )}
+            <div className="orders-section">
+                {isEmployee ? (
+                    <>
+                        <h2>Your Claimed Orders</h2>
+                        <ClaimedOrders />
+                    </>
+                ) : (
+                    <>
+                        <h2>Order History</h2>
+                        <div className="orders-container">
+                            {orderIds.length > 0 ? (
+                                orderIds.map(orderId => (
+                                    <Order 
+                                        key={orderId} 
+                                        orderId={orderId} 
+                                        editable={false}
+                                    />
+                                ))
+                            ) : (
+                                <p className="no-orders">No orders found</p>
+                            )}
+                        </div>
+                    </>
+                )}
+            </div>
         </div>
     );
 }
