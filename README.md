@@ -12,7 +12,7 @@ A modern dockerized marketplace
 OR (in terminal with desired directory open): 
 
 ```bash
-git clone https://github.com/RyanEAA/SWE-SK8TS.git
+git clone https://github.com/JVMull/sew-smooth
 ```
 
 3. Open cloned directory in VS Code
