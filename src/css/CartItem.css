@@ -1,0 +1,37 @@
+.container-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+
+.item-container {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 98%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    align-items: center;  /* Centers content vertically */
+}
+
+.cart-item-image {
+    max-height: 120px;
+    display: block;
+    margin: auto;  /* Centers image inside its grid cell */
+}
+
+.item-container div {
+    text-align: center;  /* Centers text horizontally */
+    display: flex;
+    align-items: center;  /* Centers text vertically */
+    justify-content: center;  /* Keeps content centered in grid cells */
+}
+
+.item-quantity {
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    background-color: rgb(170, 170, 170);
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+}

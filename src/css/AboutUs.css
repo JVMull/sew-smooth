@@ -1,0 +1,21 @@
+.team-photo{
+    max-height: 500px;
+    border-radius: 16px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+}
+.headshots-container{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.team-photo-container{
+    margin-bottom: 3%;
+}
+.about-us-container{
+    margin-top: 3%;
+}

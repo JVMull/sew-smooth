@@ -1,0 +1,12 @@
+p{
+    color: black;
+}
+#cart-item-container{
+    margin-top: 1%;
+    margin-bottom: 3%;
+}
+.cart-labels-container{
+    margin-top: 1%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}

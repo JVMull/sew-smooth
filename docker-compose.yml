@@ -1,0 +1,60 @@
+# version: '3.4'
+
+services:
+  reactapp:
+    # pull_policy: build
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - npmdata:/data
+      - npmletsencrypt:/etc/letsencrypt
+  api:
+    # pull_policy: build
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ${DB_ROOT_PW}
+      GEMINI_API_KEY: ${GEMINI_API_KEY} 
+      MYSQL_PRODUCTS_DB: products
+      MYSQL_USERS_DB: users
+      MYSQL_ORDER_DB: "order"
+      GITHUB_TOKEN: ${GITHUB_TOKEN}
+    ports:
+      - 3636:3636
+    depends_on:
+      - db
+    volumes:
+      - shared-images:/usr/src/app/public/Images
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PW}
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - database:/var/lib/mysql
+    env_file:
+      - stack.env
+volumes:
+  npmdata:
+  npmletsencrypt:
+  database:
+  shared-images:

@@ -1,0 +1,377 @@
+/* Parent container */
+.admin-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr; /* Equal rows */
+    gap: 20px;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  
+  /* All admin sections */
+  .admin-section {
+    /* background-color: #555; */
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 8px;
+    overflow: hidden; /* Prevent content overflow */
+    background-color: #ececec;
+  }
+  
+  
+  /* Orders list container */
+  /* Orders list container */
+  .orders-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    width: 100%;
+  }
+
+  .order-item {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center; /* Center the order content */
+  }
+  
+  /* Loading states */
+  .loading-spinner, .no-orders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: white;
+  }
+  /* Recent List Container */
+.recent-list {
+    max-height: calc(100% - 60px); /* Account for header */
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Space between cards */
+  }
+  
+  /* Card Styling */
+  .recent-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    border-left: 3px solid #4CAF50; /* Accent color */
+    background-color: white;
+  }
+  
+  .recent-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(3px);
+  }
+  
+  /* Profile Picture */
+  .profile-pic-container {
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  
+  .profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  /* User Details */
+  .user-details {
+    flex: 1;
+    min-width: 0; /* Prevents text overflow */
+  }
+  
+  .user-details h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .user-details p {
+    margin: 3px 0 0 0;
+    font-size: 0.8rem;
+    color: #bbb;
+  }
+  
+  /* Status Indicator */
+  .user-details p:last-child {
+    color: #4CAF50; /* Green for active status */
+    font-size: 0.75rem;
+  }
+  
+  /* Scrollbar */
+  .recent-list::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .recent-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+  }
+  
+  /* Empty State */
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    margin: 10px;
+  }
+
+  .scrollable-list {
+    overflow-y: auto;
+    padding-right: 10px; /* space for scrollbar */
+  }
+
+  /* Product Edit Popup Specific Styles */
+  .product-edit-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .product-edit-popup-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: auto; /* Changed from fixed width */
+    min-width: 800px; /* Minimum width */
+    max-width: 90vw; /* Maximum width */
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: productEditFadeIn 0.3s ease;
+  }
+  
+  .product-edit-popup-content h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  .product-edit-form-columns {
+    display: flex;
+    gap: 40px; /* Increased gap */
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  
+  .product-edit-form-left {
+    min-width: 400px;
+  }
+  
+  .product-edit-form-right {
+    flex: 1;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+  }
+  
+  .product-edit-customization-section {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
+  
+  .product-edit-customization-section h3 {
+    margin-top: 0;
+    color: #555;
+  }
+  
+  .product-edit-customizations-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .product-edit-customization-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    background: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  .product-edit-customization-item span {
+    flex-grow: 1;
+    font-size: 0.9rem;
+  }
+  
+  .product-edit-customization-input {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .product-edit-customization-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .product-edit-popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .product-edit-confirm-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .product-edit-confirm-content {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  }
+  
+  .product-edit-confirm-content h3 {
+    margin-top: 0;
+    color: #d32f2f;
+  }
+  
+  .product-edit-confirm-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Form group specific to product edit */
+  .product-edit-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .product-edit-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .product-edit-form-group input,
+  .product-edit-form-group select,
+  .product-edit-form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .product-edit-error-message {
+    color: #f44336;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  @keyframes productEditFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+.product-edit-form-group textarea {
+  resize: vertical; 
+}
+
+/* Update the sales chart container */
+.sales-chart-container {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* For the dashboard layout */
+.dashboard-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: stretch; /* Make cards equal height */
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Specific full-width card adjustment */
+.full-width {
+  flex: 2;
+  min-width: 60%; /* Adjust this percentage as needed */
+}
+
+/* Chart canvas wrapper */
+.chart-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
