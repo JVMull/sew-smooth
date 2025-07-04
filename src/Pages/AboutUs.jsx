@@ -5,7 +5,7 @@ function AboutUs() {
 
   return (
     <div className="about-us-container">
-        <h1>Sew Smooth</h1>
+        <h1>Sew Smooth!</h1>
         <h4 className="text-muted">Embroidery and Tailoring</h4>
 
         <div className="row justify-content-center mt-4">
