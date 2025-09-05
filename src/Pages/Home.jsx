@@ -18,7 +18,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    // Mock service data - in a real app, this would come from an API
+    // Mock service data
     const mockServices = [
       {
         id: 1,
@@ -55,35 +55,19 @@ function Home() {
         time: "4-8 weeks",
         image: "/Images/services/bridal.jpg",
         category: "special"
-      },
-      {
-        id: 5,
-        name: "Costume Creation",
-        description: "Custom costumes for theater, cosplay, or special events.",
-        price: "$180+",
-        time: "3-5 weeks",
-        image: "/Images/services/costumes.jpg",
-        category: "special"
-      },
-      {
-        id: 6,
-        name: "Home Decor Sewing",
-        description: "Custom curtains, pillows, upholstery, and other home decor items.",
-        price: "$80+",
-        time: "2-4 weeks",
-        image: "/Images/services/home-decor.jpg",
-        category: "home"
       }
     ];
 
     setServices(mockServices);
-    // Set a random featured service
     setFeaturedService(mockServices[Math.floor(Math.random() * mockServices.length)]);
   }, []);
 
   return (
     <div className="services-storefront">
-      {/* Hero Banner */}
+      {/* Background container with image */}
+      <div className="background-container"></div>
+      
+      {/* Content with semi-transparent backgrounds */}
       <section className="storefront-hero">
         <div className="hero-content">
           <h1>Professional Sewing Services</h1>
@@ -95,7 +79,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Featured Service */}
       {featuredService && (
         <section className="featured-service">
           <h2>Featured Service</h2>
@@ -116,7 +99,6 @@ function Home() {
         </section>
       )}
 
-      {/* Services Grid */}
       <section className="services-grid-section">
         <h2>Our Services</h2>
         <div className="services-grid">
@@ -138,7 +120,6 @@ function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
       <section className="process-section">
         <h2>How Our Services Work</h2>
         <div className="process-steps">
@@ -165,7 +146,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section className="testimonials">
         <h2>What Our Customers Say</h2>
         <div className="testimonial-cards">
@@ -184,7 +164,6 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta-section">
         <h2>Ready to Start Your Project?</h2>
         <p>Contact us for a free consultation and quote</p>
