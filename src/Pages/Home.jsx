@@ -72,7 +72,7 @@ function Home() {
         <div className="hero-content">
           <h1>Professional Sewing Services</h1>
           <p>Quality craftsmanship for all your sewing needs</p>
-          <Link to="/services" className="cta-button">Browse All Services</Link>
+          <Link to="/Services" className="cta-button">Browse All Services</Link>
         </div>
         <div className="hero-image">
           <img src="/Images/services/hero-sewing.jpg" alt="Sewing professional at work" />

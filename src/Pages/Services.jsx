@@ -1,7 +1,8 @@
 // Pages/Services.jsx
 import React, { useState, useEffect } from 'react';
-import ServiceCard from '../Components/ServiceCard';
-import ServicesList from '../Components/ServicesList';
+import ServiceCard from '../Components/ServiceCard.jsx';
+import ServicesList from '../Components/ServicesList.jsx';
+import './../css/Services.css'
 
 const Services = () => {
   const [services, setServices] = useState([]);
