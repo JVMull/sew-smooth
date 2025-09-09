@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import '../css/Navbar.css'
 
 const NavBar = () => {
   const user = Cookies.get('user');
@@ -13,7 +14,6 @@ const NavBar = () => {
         <Link to="/">Home</Link>
         <Link to="/services">Services</Link>
       </nav>
-      {user && <p>Welcome, {user} ({userRole})</p>}
     </header>
   );
 };
