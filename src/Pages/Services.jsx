@@ -111,8 +111,6 @@ const Services = () => {
 
   return (
     <div className="services-page">
-      <div className="background-container"></div>
-      
       <div className="page-header">
         <h1>Our Sewing Services</h1>
         <p>Professional craftsmanship for all your sewing needs</p>
