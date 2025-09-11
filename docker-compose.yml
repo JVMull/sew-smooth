@@ -21,37 +21,37 @@ services:
       - npmdata:/data
       - npmletsencrypt:/etc/letsencrypt
 
-  api:
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    environment:
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: toomato45  # Make sure this matches MARIADB_ROOT_PASSWORD
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
-      MYSQL_PRODUCTS_DB: products
-      MYSQL_USERS_DB: users
-      MYSQL_ORDER_DB: orders  # Changed from "order" (reserved keyword)
-      GITHUB_TOKEN: ${GITHUB_TOKEN}
-    ports:
-      - 3636:3636
-    depends_on:
-      - db
-    volumes:
-      - shared-images:/usr/src/app/public/Images
+  # api:
+  #   build:
+  #     context: ./api
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     MYSQL_HOST: db
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: toomato45  # Make sure this matches MARIADB_ROOT_PASSWORD
+  #     GEMINI_API_KEY: ${GEMINI_API_KEY}
+  #     MYSQL_PRODUCTS_DB: products
+  #     MYSQL_USERS_DB: users
+  #     MYSQL_ORDER_DB: orders  # Changed from "order" (reserved keyword)
+  #     GITHUB_TOKEN: ${GITHUB_TOKEN}
+  #   ports:
+  #     - 3636:3636
+  #   depends_on:
+  #     - db
+  #   volumes:
+  #     - shared-images:/usr/src/app/public/Images
 
-  db:
-    image: mariadb:latest
-    restart: always
-    environment:
-      MARIADB_ROOT_PASSWORD: toomato45  # This should match ${DB_ROOT_PW}
-      MARIADB_DATABASE: products  # Create default database
-    ports:
-      - '3306:3306'
-    volumes:
-      - database:/var/lib/mysql
-    # REMOVED: env_file: - stack.env (causing conflicts)
+  # db:
+  #   image: mariadb:latest
+  #   restart: always
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: toomato45  # This should match ${DB_ROOT_PW}
+  #     MARIADB_DATABASE: products  # Create default database
+  #   ports:
+  #     - '3306:3306'
+  #   volumes:
+  #     - database:/var/lib/mysql
+  #   # REMOVED: env_file: - stack.env (causing conflicts)
 
 volumes:
   npmdata:

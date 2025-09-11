@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import ServiceCard from '../Components/ServiceCard.jsx';
 import ServicesList from '../Components/ServicesList.jsx';
-import './../css/Services.css'
+import './../css/Services.css';
 
 const Services = () => {
   const [services, setServices] = useState([]);
