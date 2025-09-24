@@ -22,7 +22,7 @@ function Home() {
     const mockServices = [
       {
         id: 1,
-        name: "Custom Dressmaking",
+        name: "Tailoring",
         description: "Bespoke dresses tailored to your exact measurements and style preferences.",
         price: "$120+",
         time: "2-3 weeks",
@@ -31,31 +31,14 @@ function Home() {
       },
       {
         id: 2,
-        name: "Alterations & Repairs",
+        name: "Embroidery",
         description: "Professional alterations for perfect fit and repairs to extend garment life.",
         price: "$25+",
         time: "3-7 days",
         image: "/Images/services/alterations.jpg",
         category: "repairs"
       },
-      {
-        id: 3,
-        name: "Quilting Services",
-        description: "Custom quilt creation from your design or our patterns, heirloom quality.",
-        price: "$200+",
-        time: "4-6 weeks",
-        image: "/Images/services/quilting.jpg",
-        category: "home"
-      },
-      {
-        id: 4,
-        name: "Bridal Services",
-        description: "Wedding dress alterations, custom veils, and bridal party attire.",
-        price: "$150+",
-        time: "4-8 weeks",
-        image: "/Images/services/bridal.jpg",
-        category: "special"
-      }
+      
     ];
 
     setServices(mockServices);
@@ -70,8 +53,8 @@ function Home() {
       {/* Content with semi-transparent backgrounds */}
       <section className="storefront-hero">
         <div className="hero-content">
-          <h1>Professional Sewing Services</h1>
-          <p>Quality craftsmanship for all your sewing needs</p>
+          <h1>Wardrobe Personalization Services</h1>
+          <p>Make your clothes fit you!</p>
           <Link to="/Services" className="cta-button">Browse All Services</Link>
         </div>
         <div className="hero-image">
@@ -100,7 +83,7 @@ function Home() {
       )}
 
       <section className="services-grid-section">
-        <h2>Our Services</h2>
+        <h2>Our Service Categories</h2>
         <div className="services-grid">
           {services.map(service => (
             <div key={service.id} className="service-card">
@@ -125,21 +108,26 @@ function Home() {
         <div className="process-steps">
           <div className="step">
             <div className="step-number">1</div>
+            <h3>Order</h3>
+            <p>Complete our order form</p>
+          </div>
+          <div className="step">
+            <div className="step-number">2</div>
             <h3>Consultation</h3>
             <p>Discuss your project needs and timeline</p>
           </div>
           <div className="step">
-            <div className="step-number">2</div>
-            <h3>Quote & Approval</h3>
+            <div className="step-number">3</div>
+            <h3>Approval</h3>
             <p>Receive a detailed estimate for your review</p>
           </div>
           <div className="step">
-            <div className="step-number">3</div>
+            <div className="step-number">4</div>
             <h3>Creation</h3>
             <p>We craft your item with precision and care</p>
           </div>
           <div className="step">
-            <div className="step-number">4</div>
+            <div className="step-number">5</div>
             <h3>Delivery</h3>
             <p>Receive your finished piece, perfect and ready</p>
           </div>
@@ -165,8 +153,8 @@ function Home() {
       </section>
 
       <section className="cta-section">
-        <h2>Ready to Start Your Project?</h2>
-        <p>Contact us for a free consultation and quote</p>
+        <h2>Ready to Start Your Personalization Journey?</h2>
+        <p>Complete our order form, and reach out at contact@sew-smooth.com for inquiries.</p>
         <div className="cta-buttons">
           <Link to="/contact" className="cta-button primary">Get in Touch</Link>
           <Link to="/services" className="cta-button secondary">View All Services</Link>
